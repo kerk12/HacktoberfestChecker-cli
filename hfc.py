@@ -1,3 +1,4 @@
+# import the request package
 try:
     import requests
 except ImportError:
@@ -31,9 +32,9 @@ Licenced under GNU/GPLv3
     gh_name = ""
     while gh_name == "":
         gh_name = input("Please enter your github username: ")
-
+    #Make request to github api
     req = requests.get("https://api.github.com/search/issues?q=author:{}%20type:pr%20created:%3E2017-09-30%20created:%3C2017-11-01".format(gh_name))
-
+    #Get a json from the request
     json_out = req.json()
     if "errors" in json_out:
         print("The username you typed does not exist or you don't have access to view this user's profile.")
@@ -56,7 +57,7 @@ Licenced under GNU/GPLv3
     print("You have completed {}/4 pull requests:\n".format(pr_count))
     for pr in prs:
         print(pr)
-
+    #If the number of pull request that you have is equals or less than 4 the profile don't have completed the challenge
     if pr_count >= 4:
         print("\nCongratulations! You have completed the Hacktoberfest challenge!")
 
