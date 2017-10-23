@@ -1,4 +1,11 @@
-import requests
+try:
+    import requests
+except ImportError:
+    print("You're missing requests module. Please install it using pip")
+    exit(1)
+except Exception:
+    print("An exception has occured while importing the requests module.")
+    exit(1)
 
 class PullRequest:
     def __init__(self, title, url, repo, number, created_at):
@@ -17,12 +24,13 @@ if __name__ == "__main__":
     print("""Hacktoberfest Checker CLI
 Developed by Kyriakos Giannakis
 https://github.com/kerk12
-    
-Licenced under GNU/GPLv3
-    
-""")
 
-    gh_name = input("Please enter your github username: ")
+Licenced under GNU/GPLv3
+
+""")
+    gh_name = ""
+    while gh_name == "":
+        gh_name = input("Please enter your github username: ")
 
     req = requests.get("https://api.github.com/search/issues?q=author:{}%20type:pr%20created:%3E2017-09-30%20created:%3C2017-11-01".format(gh_name))
 
