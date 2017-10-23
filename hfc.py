@@ -23,6 +23,9 @@ Licenced under GNU/GPLv3
 """)
 
     gh_name = input("Please enter your github username: ")
+    if len(gh_name) < 1:
+	raise ValueError("You must provide a github username")
+	exit(1)
 
     req = requests.get("https://api.github.com/search/issues?q=author:{}%20type:pr%20created:%3E2017-09-30%20created:%3C2017-11-01".format(gh_name))
 
