@@ -3,10 +3,13 @@ try:
 except ImportError:
     print("You're missing requests module. Please install it using pip")
     exit(1)
+    #This checks for module error either it is present or not in the package
 except Exception:
     print("An exception has occured while importing the requests module.")
     exit(1)
+    #This prints error when an module import error occurs
 
+#Function implementation for pull request
 class PullRequest:
     def __init__(self, title, url, repo, number, created_at):
         self.title = title
