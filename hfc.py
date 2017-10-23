@@ -22,7 +22,8 @@ Licenced under GNU/GPLv3
     
 """)
 
-    gh_name = input("Please enter your github username: ")
+ 	
+    gh_name = str(raw_input("Please enter your github username: "))
     if len(gh_name) < 1:
 	raise ValueError("You must provide a github username")
 	exit(1)
