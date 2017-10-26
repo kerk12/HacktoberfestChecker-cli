@@ -18,7 +18,7 @@ cd /HacktoberfestChecker-cli
 ```
 python hfc.py
 ```
-4. Enter your github username (Enter your Username in inverted commas):
+4. Enter your github username:
 
 ```
 Hacktoberfest Checker CLI
