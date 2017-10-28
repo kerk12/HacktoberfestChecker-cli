@@ -1,6 +1,8 @@
 # HacktoberfestChecker-cli
 It is a simple Python3 Script for checking the number of Pull Requests you have made in the Hacktoberfest Challenge.
 
+[![Build Status](https://travis-ci.org/kerk12/HacktoberfestChecker-cli.svg?branch=master)](https://travis-ci.org/kerk12/HacktoberfestChecker-cli)
+
 ## How to get started
 1. Clone this repository onto your local environment:
 ```
