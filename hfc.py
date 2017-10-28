@@ -21,6 +21,14 @@ class PullRequest:
         output += '{} (#{}) -> {}'.format(self.title, self.number,self.url)
         return output
 
+def get_url(username):
+    """ Forms the API request url. """
+    return "https://api.github.com/search/issues?q=author:{}%20type:pr%20created:%3E2017-09-30%20created:%3C2017-11-01".format(username)
+
+def check_if_user_not_exists(json):
+    """ Determines if the user exists via the message produced. """
+    return ("errors" in json and json["errors"][0]["message"] == "The listed users cannot be searched either because the users do not exist or you do not have permission to view the users.")
+
 if __name__ == "__main__":
     print("""Hacktoberfest Checker CLI
 Developed by Kyriakos Giannakis
@@ -32,18 +40,20 @@ Licenced under GNU/GPLv3
     gh_name = ""
     while gh_name == "":
         gh_name = input("Please enter your github username: ")
+
     try:
         #Make request to github api
-        req = requests.get("https://api.github.com/search/issues?q=author:{}%20type:pr%20created:%3E2017-09-30%20created:%3C2017-11-01".format(gh_name))
+        req = requests.get(get_url(gh_name))
 
     except requests.RequestException:
         print('\nERROR CONNECTING TO THE INTERNET\n')
         exit(1)
     #Get a json from the request
     json_out = req.json()
-    if "errors" in json_out:
+    if check_if_user_not_exists(json_out):
         print("The username you typed does not exist or you don't have access to view this user's profile.")
         exit(1)
+
     prs = []
     pr_count = json_out["total_count"]
 
@@ -56,7 +66,7 @@ Licenced under GNU/GPLv3
                             created_at=item["created_at"])
             prs.append(pr)
     else:
-        print("0/0\nNo pull requests yet.")
+        print("0/4\nNo pull requests yet.")
         exit(0)
 
     print("You have completed {}/4 pull requests:\n".format(pr_count))
