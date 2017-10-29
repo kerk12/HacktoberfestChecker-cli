@@ -1,6 +1,6 @@
 
 try:
-    """Trying to import requests module,if any from the client's python library"""
+    """Trying to import requests module,if any from the client's python library."""
     import requests
 except ImportError:
     print("You're missing requests module. Please install it using pip")
@@ -10,7 +10,7 @@ except Exception:
     exit(1)
 
 class PullRequest:
-    """Class definition for PullRequest Objects"""
+    """Class definition for PullRequest Objects."""
     def __init__(self, title, url, repo, number, created_at):
         """Constructor for PullRequest"""
         self.title = title
@@ -20,7 +20,7 @@ class PullRequest:
         self.number = number
 
     def __str__(self):
-        """method to return the instance variables in the below format whenever we use print(an_object_of_PullRequest)"""
+        """Method to return the instance variables in the below format whenever we use print(an_object_of_PullRequest)."""
         output = ""
         output += '{} (#{}) -> {}'.format(self.title, self.number,self.url)
         return output
