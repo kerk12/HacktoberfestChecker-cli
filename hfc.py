@@ -27,7 +27,7 @@ class PullRequest:
 
 def get_url(username):
     """ Forms the API request url. """
-    return "https://api.github.com/search/issues?q=author:{}%20type:pr%20created:%3E2017-09-30%20created:%3C2017-11-01".format(username)
+    return "https://api.github.com/search/issues?q=author:{}%20type:pr%20created:%3E2018-09-30".format(username)
 
 def check_if_user_not_exists(json):
     """ Determines if the user exists via the message produced. """
@@ -70,14 +70,14 @@ Licenced under GNU/GPLv3
                             created_at=item["created_at"])
             prs.append(pr)
     else:
-        print("0/4\nNo pull requests yet.")
+        print("0/5\nNo pull requests yet.")
         exit(0)
 
-    print("You have completed {}/4 pull requests:\n".format(pr_count))
+    print("You have completed {}/5 pull requests:\n".format(pr_count))
     for pr in prs:
         print(pr)
-    #If the number of pull request that you have is equals or less than 4 the profile don't have completed the challenge
-    if pr_count >= 4:
+    #If the number of pull request that you have is equals or less than 5 the profile don't have completed the challenge
+    if pr_count >= 5:
         print("\nCongratulations! You have completed the Hacktoberfest challenge!")
     
     exit(0)
