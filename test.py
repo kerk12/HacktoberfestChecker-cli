@@ -8,7 +8,7 @@ class HFCTest(unittest.TestCase):
         self.username = "kjsdhfkgjshdf"  #Some random username, to check for non existing usernames.
 
     def test_1_url_forming(self):
-        self.assertEqual(get_url(self.username), "https://api.github.com/search/issues?q=author:kjsdhfkgjshdf%20type:pr%20created:%3E2017-09-30%20created:%3C2017-11-01")
+        self.assertEqual(get_url(self.username), "https://api.github.com/search/issues?q=author:kjsdhfkgjshdf%20type:pr%20created:%3E2018-09-30%20created:%3C2018-11-01")
 
     def test_2_username_existence(self):
         req = requests.get(get_url(self.username))
